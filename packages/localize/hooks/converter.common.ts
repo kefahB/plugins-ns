@@ -22,6 +22,9 @@ export abstract class ConverterCommon {
 
 	public run(): this {
 		this.dataProvider.getLanguages().forEach((languageI18nEntries, language) => {
+			if(language === this.dataProvider.getDefaultLanguage()) {
+					this.createLanguageResourcesFiles(language, false, languageI18nEntries);
+			}
 			this.createLanguageResourcesFiles(language, language === this.dataProvider.getDefaultLanguage(), languageI18nEntries);
 		});
 		if (fs.existsSync(this.appResourcesDirectoryPath) && fs.statSync(this.appResourcesDirectoryPath).isDirectory()) {
