@@ -39,7 +39,12 @@ export class AnimatedCircle extends AnimatedCircleCommon {
 		this.android.setOuterContourSize(0);
 		this.android.setInnerContourSize(0);
 		this.android.setText(this.text);
-		this.android.setValueAnimated(this.progress);
+		if(this.animated) {
+			this.android.setValueAnimated(this.progress);
+		}
+		else {
+			this.android.setValue(this.progress);
+		}
 		this.android.setDirection(this.clockwise ? at.grabner.circleprogress.Direction.CW : at.grabner.circleprogress.Direction.CCW);
 		this.android.setRimWidth(this.rimWidth);
 		this.android.setBarWidth(this.barWidth);
